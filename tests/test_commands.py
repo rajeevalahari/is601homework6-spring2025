@@ -1,10 +1,12 @@
 """Tests for the calculator commands (add, sub, mul, div) and the exit command."""
 
+import pytest
 from app.plugins.add import AddCommand
 from app.plugins.sub import SubtractCommand
 from app.plugins.mul import MultiplyCommand
 from app.plugins.div import DivideCommand
 from app.plugins.menu import MenuCommand
+from app.plugins.exit import ExitCommand
 
 def test_plugin_add_command_valid(capfd, monkeypatch):
     """Test that the AddCommand correctly adds two numbers."""
@@ -86,6 +88,14 @@ def test_plugin_divide_command_invalid(capfd, monkeypatch):
     command.execute()
     out, _ = capfd.readouterr()
     assert "Invalid input" in out
+
+def test_plugin_exit_command(capfd):
+    """Test that the ExitCommand exits the application."""
+    command = ExitCommand()
+    with pytest.raises(SystemExit) as e:
+        command.execute()
+    out, _ = capfd.readouterr()
+    assert str(e.value) == "Exiting...", "ExitCommand did not exit as expected"
 
 def test_plugin_menu_command(capfd):
     """Test that the MenuCommand prints the expected menu."""
