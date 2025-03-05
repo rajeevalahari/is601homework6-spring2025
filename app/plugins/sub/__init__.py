@@ -1,4 +1,5 @@
 import sys
+import logging
 from app.commands import Command
 
 class SubtractCommand(Command):
@@ -6,6 +7,9 @@ class SubtractCommand(Command):
         try:
             a = float(input("Enter first number: "))
             b = float(input("Enter second number: "))
-            print(f"Result: {a - b}")
+            result=a-b
+            logging.info("SubtractCommand: %s - %s = %s", a, b, result)
+            print(f"Result: {result}")
         except ValueError:
+            logging.error("SubtractCommand: Invalid input encountered")
             print("Invalid input. Please enter numeric values.")

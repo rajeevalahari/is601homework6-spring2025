@@ -1,10 +1,12 @@
 import sys
+import logging
 from app.commands import Command
 
 class MenuCommand(Command):
     """A command that prints a static list of available commands."""
 
     def execute(self):
+        logging.info("MenuCommand: Displaying available commands")
         print("Available commands:")
         print("  add  -> Adds two numbers")
         print("  sub  -> Subtracts the second number from the first")
