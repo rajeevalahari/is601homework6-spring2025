@@ -12,4 +12,5 @@
 3. pytest --pylint --cov
 
 ## My Understanding
-1. Added calculator plugins add,sub,mul,div along with menu and exit
+1. Added new features like GitHub Actions ,Environmental variables and logging to the Calculator.
+2. Added necessary testing and modifications related to the features.
